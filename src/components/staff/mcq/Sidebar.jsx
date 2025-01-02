@@ -13,9 +13,10 @@ export default function Sidebar({
   const questionNumbers = Array.from({ length }, (_, i) => i + 1);
 
   const questionStatuses = questionNumbers.map((num) => {
+    const index = num - 1;
+    if (reviewStatus[index]) return "review";
     if (num - 1 === currentIndex) return "current";
-    if (reviewStatus[num - 1]) return "review";
-    if (selectedAnswers[num - 1]) return "answered";
+    if (selectedAnswers[index]) return "answered";
     return "notAnswered";
   });
 

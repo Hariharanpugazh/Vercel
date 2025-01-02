@@ -50,6 +50,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const Navbar = () => {
   const [anchorEl, setAnchorEl] = useState(null);
+  const [studentData, setStudentData] = useState({
+    name: "",
+    regno: "",
+  });
   const navigate = useNavigate();
 
   const handleMenuOpen = (event) => {
@@ -67,21 +71,20 @@ const Navbar = () => {
         const name = cookie.split("=")[0].trim();
         document.cookie = `${name}=;expires=${new Date(0).toUTCString()};path=/`;
       });
-  
+
       // Clear all tokens from localStorage and sessionStorage
       localStorage.removeItem("accessToken"); // JWT access token
       localStorage.removeItem("refreshToken"); // JWT refresh token
       sessionStorage.clear(); // Clear all session data
-  
+
       // Navigate to login page
       navigate("/studentlogin");
-  
+
       console.log("User successfully logged out");
     } catch (error) {
       console.error("Error during logout:", error);
     }
   };
-  
 
   const handleSettingsClick = () => {
     navigate('/studentprofile');
@@ -102,11 +105,9 @@ const Navbar = () => {
               SNS Groups
             </Link>
           </Typography>
-         
         </Box>
 
         {/* Center: Search */}
-        
 
         {/* Right: Profile Menu */}
         <Box display="flex" alignItems="center">
@@ -120,7 +121,7 @@ const Navbar = () => {
               alt="Profile"
               className="cursor-pointer"
             >
-              P
+              {studentData.name}
             </Avatar>
           </IconButton>
           <Menu

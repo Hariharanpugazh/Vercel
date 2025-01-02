@@ -27,6 +27,11 @@ export default function Question({
     onAnswerSelect(currentIndex, option); // Update selected answers in the parent component
   };
 
+  const handleReviewMark = () => {
+    const newStatus = !isMarkedForReview;
+    onReviewMark(currentIndex);
+  };
+
   const handleFinishClick = () => {
     setShowPopup(true); // Show the popup
   };
@@ -50,29 +55,27 @@ export default function Question({
           className={`text-sm border rounded-full px-4 py-1 ${
             isMarkedForReview ? "text-white bg-green-500" : "text-red-500 border-red-500"
           }`}
-          onClick={() => onReviewMark(currentIndex)} // Call the review mark callback
+          onClick={handleReviewMark} // Call the review mark callback
         >
           {isMarkedForReview ? "Marked for Review" : "Mark for Review"}
         </button>
       </div>
-<div className="border border-black/15 rounded-xl p-8">
-      <p className="text-lg">{question.text}</p>
-
-      <div className="space-y-4 mb-8 mt-5">
-        {question.options.map((option, idx) => (
-          <button
-            key={idx}
-            className={`w-full p-4 text-left border rounded-lg transition-colors ${
-              selectedOption === option ? "border-[#00296b] bg-[#fdc500]" : ""
-            }`}
-            onClick={() => handleOptionSelect(option)}
-          >
-            {option}
-          </button>
-        ))}
+      <div className="border border-black/15 rounded-xl p-8">
+        <p className="text-lg">{question.text}</p>
+        <div className="space-y-4 mb-8 mt-5">
+          {question.options.map((option, idx) => (
+            <button
+              key={idx}
+              className={`w-full p-4 text-left border rounded-lg transition-colors ${
+                selectedOption === option ? "border-[#00296b] bg-[#fdc500]" : ""
+              }`}
+              onClick={() => handleOptionSelect(option)}
+            >
+              {option}
+            </button>
+          ))}
+        </div>
       </div>
-      </div>
-
       <div className="flex justify-between mt-6 mb-20">
         <button
           className="bg-[#fdc500] text-[#00296b] px-8 py-2 rounded-full flex items-center gap-2"
@@ -95,7 +98,6 @@ export default function Question({
           Next →
         </button>
       </div>
-
       {showPopup && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white w-[600px] p-6 rounded-xl shadow-lg">

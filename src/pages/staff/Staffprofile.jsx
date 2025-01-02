@@ -32,7 +32,7 @@ const StaffProfile = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await axios.get('https://render-frontend-f05v.onrender.com/api/staff/profile/', {
+        const response = await axios.get('https://vercel-1bge.onrender.com/api/staff/profile/', {
           withCredentials: true, // Include cookies for authentication
         });
         setProfile(response.data);
@@ -58,7 +58,7 @@ const StaffProfile = () => {
     setSuccessMessage('');
     setError('');
     try {
-      await axios.put('https://render-frontend-f05v.onrender.com/api/staff/profile/', profile, {
+      await axios.put('https://vercel-1bge.onrender.com/api/staff/profile/', profile, {
         withCredentials: true,
       });
       setSuccessMessage('Profile updated successfully!');

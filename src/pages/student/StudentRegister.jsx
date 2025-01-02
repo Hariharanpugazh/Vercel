@@ -23,7 +23,7 @@ const StudentRegister = () => {
     e.preventDefault();
     
     try {
-      const response = await axios.post('https://render-frontend-f05v.onrender.com/api/student/signup/', formData);
+      const response = await axios.post('https://vercel-1bge.onrender.com/api/student/signup/', formData);
       
       if (response.status === 201) {
         alert('Registration successful! Please log in.');

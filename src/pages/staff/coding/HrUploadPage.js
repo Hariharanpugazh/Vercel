@@ -52,7 +52,7 @@ const HrUpload = () => {
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const response = await axios.get("https://render-frontend-f05v.onrender.com/manualProblems/");
+        const response = await axios.get("https://vercel-1bge.onrender.com/manualProblems/");
         setQuestions(response.data.problems);
       } catch (error) {
         console.error("Failed to fetch questions:", error);
@@ -61,7 +61,7 @@ const HrUpload = () => {
 
     const fetchStudents = async () => {
       try {
-        const response = await axios.get("https://render-frontend-f05v.onrender.com/api/student/");
+        const response = await axios.get("https://vercel-1bge.onrender.com/api/student/");
         setStudents(response.data);
         setFilteredStudents(response.data); // Initialize filtered list
       } catch (error) {
@@ -113,7 +113,7 @@ const HrUpload = () => {
 
   const handleDelete = async (questionId) => {
     try {
-      await axios.delete("https://render-frontend-f05v.onrender.com/manualProblems/", {
+      await axios.delete("https://vercel-1bge.onrender.com/manualProblems/", {
         data: { id: questionId },
       });
       setQuestions(questions.filter((q) => q.id !== questionId));
@@ -147,7 +147,7 @@ const HrUpload = () => {
       const csrfToken = Cookies.get("csrftoken");
 
       try {
-        const response = await axios.post("https://render-frontend-f05v.onrender.com/userinput/", formData, {
+        const response = await axios.post("https://vercel-1bge.onrender.com/userinput/", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
             "X-CSRFToken": csrfToken,
@@ -171,7 +171,7 @@ const HrUpload = () => {
 
   const handlePublish = async () => {
     try {
-      const response = await axios.post("https://render-frontend-f05v.onrender.com/publish/", {
+      const response = await axios.post("https://vercel-1bge.onrender.com/publish/", {
         contestId,
         students: selectedStudents,
       });

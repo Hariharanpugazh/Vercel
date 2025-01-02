@@ -48,7 +48,7 @@ function CreateProfile() {
 
     try {
       // Step 1: Call the Contest API
-      const contestResponse = await axios.post('https://render-frontend-f05v.onrender.com/autocontest/', {
+      const contestResponse = await axios.post('https://vercel-1bge.onrender.com/autocontest/', {
         role: formData.role,
         contest_id: formData.contest_id,
       });
@@ -58,7 +58,7 @@ function CreateProfile() {
       // Proceed only if the Contest API is successful
       if (contestResponse.status === 200) {
         // Step 2: Call the User Info API
-        const userResponse = await axios.post('https://render-frontend-f05v.onrender.com/userinfo/', {
+        const userResponse = await axios.post('https://vercel-1bge.onrender.com/userinfo/', {
           name: formData.name,
           role: formData.role,
           skills: formData.skills,

@@ -1,118 +1,107 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate, useParams, useLocation } from "react-router-dom";
-import { Button, Typography, Box, Paper, CircularProgress } from "@mui/material";
-import { styled } from "@mui/material/styles";
-import axios from "axios";
-import testImage from "../../assets/instruction.png";
-import ProblemDetails from "../../components/staff/coding/ProblemDetails";  // Import ProblemDetails component
-import { Assessment } from "@mui/icons-material";
-
-const StyledPaper = styled(Paper)(({ theme }) => ({
-  padding: theme.spacing(5),
-  width: "100%",
-  backgroundColor: theme.palette.background.default,
-  boxShadow: theme.shadows[10],
-  borderRadius: theme.shape.borderRadius,
-  position: 'relative',
-  maxWidth: 'none',
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-}));
-
-const HeaderContainer = styled(Box)(({ theme }) => ({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  width: '100%',
-  marginBottom: theme.spacing(4),
-}));
-
-const ImageContainer = styled(Box)(({ theme }) => ({
-  marginRight: theme.spacing(4),
-}));
-
-const TextContainer = styled(Box)(({ theme }) => ({
-  textAlign: 'center',
-  paddingLeft: '40%',
-  width: '100%',
-}));
-
-const SectionContainer = styled(Box)(({ theme }) => ({
-  marginTop: theme.spacing(9),
-  width: '100%',
-  display: 'flex',
-  justifyContent: 'space-between',
-}));
-
-const StyledButton = styled(Button)(({ theme }) => ({
-  position: "absolute",
-  bottom: theme.spacing(2),
-  right: theme.spacing(2),
-  padding: theme.spacing(1.5, 4),
-  fontSize: "1rem",
-  fontWeight: "bold",
-  color: theme.palette.primary.contrastText,
-  backgroundColor: theme.palette.primary.main,
-  '&:hover': {
-    backgroundColor: theme.palette.primary.dark,
-  },
-}));
-
-// coding assessment
-const start_codingTest = async (contestId, studentId) => {
-  try {
-    // Call the start_test API
-    const startTestResponse = await axios.post('https://render-frontend-f05v.onrender.com/api/start_test/', {
-      contest_id: contestId,
-      student_id: studentId,
-    });
-
-    console.log("Fetched from start_test API:", startTestResponse.data.message);
-
-    // Call the save_contest_report API
-    const saveReportResponse = await axios.post('https://render-frontend-f05v.onrender.com/api/save_coding_report/', {
-      contest_id: contestId,
-      student_id: studentId,
-    });
-
-    console.log("Fetched from save_contest_report API:", saveReportResponse.data.message);
-
-  } catch (error) {
-    console.error("Error during API calls:", error);
-  }
-};
-
-
-// mcq Assessment
-const start_mcqTest = async (contestId, studentId) => {
-  try {
-    const response = await axios.post('https://render-frontend-f05v.onrender.com/api/start_mcqtest/', {
-      contest_id: contestId,
-      student_id: studentId,
-    });
-    console.log("Fetched from API:", response.data.message);
-  } catch (error) {
-    console.error("Error starting test:", error);
-    throw error; // Rethrow error to be handled by the caller
-  }
-};
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useParams, useLocation } from 'react-router-dom';
+import axios from 'axios';
+import assessmentIllustration from '../../assets/testinstruction.png';
 
 const TestInstructions = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { contestId } = useParams(); // Retrieve contestId from route params
-  const { test } = location.state || {}; // Retrieve test data from state
-  const [loading, setLoading] = useState(false); 
-  const { assessment_type } = location.state || {};// For loading spinner
+  const { contestId } = useParams();
+  const { assessment_type } = location.state || {};
+  const [loading, setLoading] = useState(false);
+  const [mcqTests, setMcqTests] = useState([]);
 
-  // Store contestId and studentId in localStorage if not present
+  // Coding Assessment API function
+  const start_codingTest = async (contestId, studentId) => {
+    try {
+      const startTestResponse = await axios.post('https://vercel-1bge.onrender.com/api/start_test/', {
+        contest_id: contestId,
+        student_id: studentId,
+      });
+
+      console.log("Fetched from start_test API:", startTestResponse.data.message);
+
+      const saveReportResponse = await axios.post('https://vercel-1bge.onrender.com/api/save_coding_report/', {
+        contest_id: contestId,
+        student_id: studentId,
+      });
+
+      console.log("Fetched from save_contest_report API:", saveReportResponse.data.message);
+
+    } catch (error) {
+      console.error("Error during API calls:", error);
+      throw error;
+    }
+  };
+
+  // MCQ Assessment API function
+  const start_mcqTest = async (contestId, studentId) => {
+    try {
+      const response = await axios.post('https://vercel-1bge.onrender.com/api/start_mcqtest/', {
+        contest_id: contestId,
+        student_id: studentId,
+      });
+      console.log("Fetched from API:", response.data.message);
+    } catch (error) {
+      console.error("Error starting test:", error);
+      throw error;
+    }
+  };
+
+  const fetchMcqTests = async (regno) => {
+    try {
+      const response = await axios.get(`https://vercel-1bge.onrender.com/api/student/mcq-tests?regno=${regno}`, {
+        withCredentials: true,
+      });
+
+      const formattedTests = response.data.map((test) => {
+        const { hours, minutes } = test.testConfiguration.duration;
+        const duration = (parseInt(hours) * 3600) + (parseInt(minutes) * 60);
+        const fullScreenMode = test.testConfiguration.fullScreenMode;
+        const faceDetection = test.testConfiguration.faceDetection;
+        const passPercentage = test.testConfiguration.passPercentage;
+
+        localStorage.setItem(`testDuration_${test._id}`, duration);
+        localStorage.setItem(`fullScreenMode_${test._id}`, fullScreenMode);
+        localStorage.setItem(`faceDetection_${test._id}`, faceDetection);
+
+        return {
+          testId: test._id,
+          name: test.assessmentOverview?.name || "Unknown Test",
+          description: test.assessmentOverview?.description || "No description available.",
+          starttime: test.assessmentOverview?.registrationStart || "No Time",
+          endtime: test.assessmentOverview?.registrationEnd || "No Time",
+          questions: parseInt(test.testConfiguration?.questions, 10) || 0,
+          duration: `${hours} hours ${minutes} minutes`,
+          passPercentage: passPercentage,
+          assessment_type: "mcq",
+          status: test.status,
+          fullScreenMode: test.testConfiguration.fullScreenMode,
+          faceDetection: test.testConfiguration.faceDetection,
+          deviceRestriction: test.testConfiguration.deviceRestriction,
+          noiseDetection: test.testConfiguration.noiseDetection,
+          guidelines: test.assessmentOverview?.guidelines || "No guidelines available.",
+        };
+      });
+
+      return formattedTests;
+    } catch (error) {
+      console.error("Error fetching MCQ tests:", error);
+      return [];
+    }
+  };
+
   useEffect(() => {
-    if (!localStorage.getItem("contestState")) {
-      const studentId = localStorage.getItem("studentId");
-      if (studentId && contestId) {
-        localStorage.setItem("contestState", JSON.stringify({ contest_id: contestId, student_id: studentId }));
-      }
+    const studentId = localStorage.getItem("studentId");
+    if (studentId && contestId) {
+      localStorage.setItem("contestState", JSON.stringify({ contest_id: contestId, student_id: studentId }));
+
+      const fetchTests = async () => {
+        const tests = await fetchMcqTests(studentId);
+        setMcqTests(tests);
+      };
+
+      fetchTests();
     }
   }, [contestId]);
 
@@ -123,89 +112,204 @@ const TestInstructions = () => {
       return;
     }
 
+    setLoading(true);
     try {
-      // Pass contest_id and student_id dynamically via 'state'
       if (assessment_type === "coding") {
         await start_codingTest(contestId, studentId);
-        navigate(`/coding/${contestId}`, { 
+        navigate(`/coding/${contestId}`, {
           state: { contest_id: contestId, student_id: studentId }
         });
-      }else if(assessment_type === "mcq"){
+      } else if (assessment_type === "mcq") {
         await start_mcqTest(contestId, studentId);
-        navigate(`/mcq/${contestId}`, { 
+        navigate(`/mcq/${contestId}`, {
           state: { contest_id: contestId, student_id: studentId }
         });
       }
-      
     } catch (error) {
       console.error("Error starting test:", error);
+    } finally {
+      setLoading(false);
     }
-
   };
 
-  const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    return date.toLocaleString();
-  };
+  const currentTest = mcqTests.find(test => test.testId === contestId);
 
   return (
-    <Box
-      display="flex"
-      flexDirection="column"
-      alignItems="center"
-      justifyContent="center"
-      minHeight="10vh"
-      padding={2}
-      bgcolor="background.paper"
-      width="75%"
-      margin="auto"
-    >
-      <StyledPaper>
-        <HeaderContainer>
-          <ImageContainer>
-            <img src={testImage} alt="Test Image" style={{ width: '600px', height: 'auto', position: 'absolute' }} />
-          </ImageContainer>
-        </HeaderContainer>
-        <TextContainer mt={10}>
-          <Typography variant="h4" gutterBottom color="textPrimary">
-            {test?.name || "Test Name"}
-          </Typography>
-          <Typography variant="body1" paragraph color="textSecondary">
-            Registration Start Date: {test?.starttime ? formatDate(test.starttime) : "N/A"}
-          </Typography>
-          <Typography variant="body1" paragraph color="textSecondary">
-            Registration End Date: {test?.endtime ? formatDate(test.endtime) : "N/A"}
-          </Typography>
-        </TextContainer>
+    <div className="min-h-screen bg-blue-50 p-4">
+      <div className="max-w-[1920px] mx-auto">
+        <div className="space-y-6">
+        <div className="bg-white rounded-lg p-10 shadow-lg">
+        <div className="flex flex-col lg:flex-row lg:items-start lg:gap-12 mb-10">
+      {/* Left Column - Image */}
+      <div className="lg:w-1/4 mb-6 lg:mb-0 pt-4">
+        <div className="bg-blue-50 rounded-lg p-4">
+          <img
+            src={assessmentIllustration}
+            alt="Assessment illustration"
+            className="w-full rounded-lg object-cover h-96"
+          />
+        </div>
+      </div>
+      {/* Right Column - Content */}
+      <div className="lg:flex-1 pt-4 h-fit overflow-y-auto">
+        {/* Test Title and Description */}
+        <div className="mb-8">
+          <h1 className="text-4xl font-bold text-blue-900 mb-6">
+            {currentTest?.name || "Test Name"}
+          </h1>
+          <p className="text-gray-600 text-lg mb-6">
+            {currentTest?.description || 
+             "Embark on a journey to sharpen your analytical thinking and problem-solving skills with our course."}
+          </p>
+          
+          {/* Test Details Title */}
+          <h2 className="text-2xl font-bold text-blue-900 mb-4">
+            Test Details
+          </h2>
+        </div>
+        {/* Test Details Grid - Modified to always show 2 columns */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6">
+          {/* Duration */}
+          <div className="p-6 bg-blue-50 rounded-lg">
+            <h3 className="text-gray-600 mb-3 text-lg font-medium">
+              Duration
+            </h3>
+            <p className="font-semibold text-xl">
+              {currentTest?.duration || "0 Hour"}
+            </p>
+          </div>
+          {/* Questions */}
+          <div className="p-6 bg-blue-50 rounded-lg">
+            <h3 className="text-gray-600 mb-3 text-lg font-medium">
+              Questions
+            </h3>
+            <p className="font-semibold text-xl">
+              {currentTest?.questions || "0"}
+            </p>
+          </div>
+          {/* Pass Percentage */}
+          <div className="p-6 bg-blue-50 rounded-lg">
+            <h3 className="text-gray-600 mb-3 text-lg font-medium">
+              Pass Percentage
+            </h3>
+            <p className="font-semibold text-xl">
+              {currentTest?.passPercentage || "0"}%
+            </p>
+          </div>
+          {/* Sections */}
+          <div className="p-6 bg-blue-50 rounded-lg">
+            <h3 className="text-gray-600 mb-3 text-lg font-medium">
+              Sections
+            </h3>
+            <p className="font-semibold text-xl">
+              {currentTest?.sections || "0"}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-        <SectionContainer>
-          {/* Additional sections */}
-        </SectionContainer>
+          {/* Registration Dates */}
+          <div className="bg-white rounded-lg p-10 shadow-lg">
+            <h2 className="text-3xl font-bold text-blue-900 mb-8">Registration Period</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+              <div className="p-6 bg-blue-50 rounded-lg">
+                <h3 className="text-gray-600 mb-3 text-lg">Start Date</h3>
+                <p className="font-semibold text-xl">{currentTest?.starttime || "23 AUG 2023 Time: 7 PM"}</p>
+              </div>
+              <div className="p-6 bg-blue-50 rounded-lg">
+                <h3 className="text-gray-600 mb-3 text-lg">End Date</h3>
+                <p className="font-semibold text-xl">{currentTest?.endtime || "24 AUG 2023 Time: 7 PM"}</p>
+              </div>
+            </div>
+          </div>
 
-        <Box mt={20} width="100%">
-          <Typography variant="h5" gutterBottom align="left" color="textPrimary">
-            All that you need to know about Assessment
-          </Typography>
-          <Typography variant="body1" paragraph color="textSecondary">
-            {test?.description || "N/A"}
-          </Typography>
+          {/* Test Settings */}
+          {/* <div className="bg-white rounded-lg p-10 shadow-lg">
+            <h2 className="text-3xl font-bold text-blue-900 mb-8">Test Settings</h2>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+              <div>
+                <h3 className="text-2xl font-semibold mb-6">Proctoring Features</h3>
+                <div className="space-y-6">
+                  <div className="flex items-center justify-between p-4 bg-blue-50 rounded-lg">
+                    <span className="text-lg">Face Detection</span>
+                    <div className="w-14 h-7 bg-yellow-400 rounded-full relative">
+                      <div className={`absolute right-1 top-1 w-5 h-5 bg-white rounded-full transition-transform ${currentTest?.faceDetection ? 'translate-x-7' : ''}`}></div>
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-between p-4 bg-blue-50 rounded-lg">
+                    <span className="text-lg">Noise Detection</span>
+                    <div className="w-14 h-7 bg-yellow-400 rounded-full relative">
+                      <div className={`absolute right-1 top-1 w-5 h-5 bg-white rounded-full transition-transform ${currentTest?.noiseDetection ? 'translate-x-7' : ''}`}></div>
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-between p-4 bg-blue-50 rounded-lg">
+                    <span className="text-lg">Full Screen Mode</span>
+                    <div className="w-14 h-7 bg-yellow-400 rounded-full relative">
+                      <div className={`absolute right-1 top-1 w-5 h-5 bg-white rounded-full transition-transform ${currentTest?.fullScreenMode ? 'translate-x-7' : ''}`}></div>
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-between p-4 bg-blue-50 rounded-lg">
+                    <span className="text-lg">Mobile Access Restriction</span>
+                    <div className="w-14 h-7 bg-yellow-400 rounded-full relative">
+                      <div className={`absolute right-1 top-1 w-5 h-5 bg-white rounded-full transition-transform ${currentTest?.deviceRestriction ? 'translate-x-7' : ''}`}></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h3 className="text-2xl font-semibold mb-6">Test Rules</h3>
+                <div className="space-y-4">
+                  <p className="flex items-center gap-3 p-4 bg-blue-50 rounded-lg text-lg">
+                    <span className="text-green-500 text-2xl">✓</span>
+                    Immediate Result Release
+                  </p>
+                  <p className="flex items-center gap-3 p-4 bg-blue-50 rounded-lg text-lg">
+                    <span className="text-green-500 text-2xl">✓</span>
+                    Complete Test Duration Required
+                  </p>
+                  <p className="flex items-center gap-3 p-4 bg-blue-50 rounded-lg text-lg">
+                    <span className="text-green-500 text-2xl">✓</span>
+                    Minimum Pass Percentage: 50%
+                  </p>
+                  <p className="flex items-center gap-3 p-4 bg-blue-50 rounded-lg text-lg">
+                    <span className="text-green-500 text-2xl">✓</span>
+                    Section-wise Timer Enabled
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div> */}
 
-          {loading ? (
-            <CircularProgress /> // Show a spinner while the backend operation is ongoing
-          ) : (
-            <StyledButton onClick={handleStartTest}>
-              Start Test
-            </StyledButton>
-          )}
-        </Box>
+          {/* Instructions */}
+          <div className="bg-white rounded-lg p-10 shadow-lg">
+            <h2 className="text-3xl font-bold text-blue-900 mb-8">Test Instructions</h2>
+            <div className="space-y-6">
+              <p className="text-gray-600 text-lg">Please read the following instructions carefully before starting the test:</p>
+              <ul className="list-disc pl-8 space-y-3 text-gray-700 text-lg">
+                <li>Questions: {currentTest?.questions || "30"} questions, 1 mark each.</li>
+                <li>Duration: {currentTest?.duration || "45"} minutes.</li>
+                <li>Device: Use a stable internet connection on a laptop or suitable device (iPhones not recommended).</li>
+                <li>Submission: Click "Submit" after each question.</li>
+                <li>Fair Play: Unfair practices, including plagiarism, result in disqualification.</li>
+              </ul>
+            </div>
 
-        <Box mt={4}>
-          <Typography variant="body2" color="textSecondary">
-            By clicking on "Start Test", you agree to our terms and conditions.
-          </Typography>
-        </Box>
-      </StyledPaper>
-    </Box>
+            {/* Start Button */}
+            <div className="mt-10">
+              <button
+                onClick={handleStartTest}
+                disabled={loading}
+                className="px-10 py-4 bg-yellow-400 text-black rounded-full font-semibold text-lg hover:bg-yellow-500 transition-colors disabled:opacity-50"
+              >
+                {loading ? 'Loading...' : 'Start Test'}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 
