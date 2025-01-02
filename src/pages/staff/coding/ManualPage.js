@@ -36,7 +36,7 @@ const ManualPage = () => {
 
       const csrfToken = Cookies.get('csrftoken');
 
-      axios.post('https://vercel-1bge.onrender.com/userinput/', formData, {
+      axios.post('https://render-frontend-f05v.onrender.com//userinput/', formData, {
           headers: {
               'Content-Type': 'multipart/form-data',
               'X-CSRFToken': csrfToken
@@ -64,7 +64,7 @@ const ManualPage = () => {
 
   const handlePublish = async () => {
     try {
-      const response = await axios.post('https://vercel-1bge.onrender.com/publish/');
+      const response = await axios.post('https://render-frontend-f05v.onrender.com//publish/');
       if (response.status === 200) {
         alert('Questions published successfully!');
       } else {

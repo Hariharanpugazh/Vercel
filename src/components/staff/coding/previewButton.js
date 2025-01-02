@@ -9,7 +9,7 @@ const PreviewButton = ({ onEditProblem }) => {
 
   const handlePreview = async () => {
     try {
-      const response = await axios.get('https://vercel-1bge.onrender.com/manualProblems/');
+      const response = await axios.get('https://render-frontend-f05v.onrender.com//manualProblems/');
       const questions = response.data.problems;
 
       setPreviewData({
@@ -34,7 +34,7 @@ const PreviewButton = ({ onEditProblem }) => {
 
   const handleDelete = async (problemId) => {
     try {
-      await axios.delete(`https://vercel-1bge.onrender.com/manualProblems/`, { data: { id: problemId } });
+      await axios.delete(`https://render-frontend-f05v.onrender.com//manualProblems/`, { data: { id: problemId } });
       // Refresh the preview data after deletion
       handlePreview();
     } catch (error) {

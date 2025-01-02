@@ -15,7 +15,7 @@ const StudentReport = () => {
     const fetchStudentReport = async () => {
       try {
         const response = await axios.get(
-          `https://vercel-1bge.onrender.com/api/mcq/student-report/${contestId}/${regno}/`
+          `https://render-frontend-f05v.onrender.com//api/mcq/student-report/${contestId}/${regno}/`
         );
         console.log(response.data);  // Debugging
         setTestData(response.data);

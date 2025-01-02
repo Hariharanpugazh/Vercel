@@ -44,7 +44,7 @@ const OnebyOne = () => {
       console.log("Attempting to save data:", updatedQuestion);
   
       // POST request to add the new question
-      const response = await axios.post('https://vercel-1bge.onrender.com/manualProblems/', { problems: [updatedQuestion] });
+      const response = await axios.post('https://render-frontend-f05v.onrender.com//manualProblems/', { problems: [updatedQuestion] });
       console.log("Response:", response.data);
   
       if (response.status === 200 || response.status === 201) {

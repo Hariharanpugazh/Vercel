@@ -33,7 +33,7 @@ export default function Login() {
     
     try {
       const response = await axios.post(
-        'https://vercel-1bge.onrender.com/api/staff/login/',
+        'https://render-frontend-f05v.onrender.com//api/staff/login/',
         {
           email: formData.email,
           password: formData.password,
@@ -65,7 +65,7 @@ export default function Login() {
       }
 
       // API call to fetch staff data
-      const response = await axios.get('https://vercel-1bge.onrender.com/api/staff/profile/', {
+      const response = await axios.get('https://render-frontend-f05v.onrender.com//api/staff/profile/', {
         withCredentials: true, // Include cookies if needed
         headers: {
           Authorization: `Bearer ${token}`, // Add JWT token to headers

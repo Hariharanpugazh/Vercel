@@ -168,7 +168,7 @@ function ContestPage() {
 
   const handleCompileAndRun = async () => {
     try {
-      const response = await axios.post("https://vercel-1bge.onrender.com/compile/", {
+      const response = await axios.post("https://render-frontend-f05v.onrender.com//compile/", {
         user_code: code,
         language: language,
         problem_id: selectedProblemId,
@@ -187,7 +187,7 @@ function ContestPage() {
 
   const handleSubmit = async () => {
     try {
-      const response = await axios.post("https://vercel-1bge.onrender.com/submit/", {
+      const response = await axios.post("https://render-frontend-f05v.onrender.com//submit/", {
         user_code: code,
         language: language,
         problem_id: selectedProblemId,
@@ -244,7 +244,7 @@ function ContestPage() {
         results: results,
       };
   
-      await axios.post("https://vercel-1bge.onrender.com/api/finish_test/", payload);
+      await axios.post("https://render-frontend-f05v.onrender.com//api/finish_test/", payload);
   
       if (document.fullscreenElement) {
         await document.exitFullscreen();

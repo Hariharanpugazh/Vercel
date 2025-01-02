@@ -46,7 +46,7 @@ const ManualSelectUI = () => {
         samples: testCases,
         hidden_samples: hiddenTestCases,
       };
-      await axios.put('https://vercel-1bge.onrender.com/manualProblems/', { problems: [updatedQuestion] });
+      await axios.put('https://render-frontend-f05v.onrender.com//manualProblems/', { problems: [updatedQuestion] });
       navigate('/hrUpload');
     } catch (error) {
       console.error("Failed to save question:", error);

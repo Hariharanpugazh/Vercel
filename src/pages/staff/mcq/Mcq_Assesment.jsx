@@ -85,7 +85,7 @@
             await saveDataToMongoDB(generatedContestId);
 
             const response = await axios.post(
-              "https://vercel-1bge.onrender.com/api/mcq/start-contest/",
+              "https://render-frontend-f05v.onrender.com//api/mcq/start-contest/",
               { contestId: generatedContestId },
               {
                 headers: {
@@ -130,7 +130,7 @@
       };
 
       try {
-        const response = await fetch("https://vercel-1bge.onrender.com/api/mcq/save-data/", {
+        const response = await fetch("https://render-frontend-f05v.onrender.com//api/mcq/save-data/", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
