@@ -14,14 +14,14 @@ const TestInstructions = () => {
   // Coding Assessment API function
   const start_codingTest = async (contestId, studentId) => {
     try {
-      const startTestResponse = await axios.post('https://vercel-1bge.onrender.com/api/start_test/', {
+      const startTestResponse = await axios.post('https://render-frontend-f05v.onrender.com/api/start_test/', {
         contest_id: contestId,
         student_id: studentId,
       });
 
       console.log("Fetched from start_test API:", startTestResponse.data.message);
 
-      const saveReportResponse = await axios.post('https://vercel-1bge.onrender.com/api/save_coding_report/', {
+      const saveReportResponse = await axios.post('https://render-frontend-f05v.onrender.com/api/save_coding_report/', {
         contest_id: contestId,
         student_id: studentId,
       });
@@ -37,7 +37,7 @@ const TestInstructions = () => {
   // MCQ Assessment API function
   const start_mcqTest = async (contestId, studentId) => {
     try {
-      const response = await axios.post('https://vercel-1bge.onrender.com/api/start_mcqtest/', {
+      const response = await axios.post('https://render-frontend-f05v.onrender.com/api/start_mcqtest/', {
         contest_id: contestId,
         student_id: studentId,
       });
@@ -50,7 +50,7 @@ const TestInstructions = () => {
 
   const fetchMcqTests = async (regno) => {
     try {
-      const response = await axios.get(`https://vercel-1bge.onrender.com/api/student/mcq-tests?regno=${regno}`, {
+      const response = await axios.get(`https://render-frontend-f05v.onrender.com/api/student/mcq-tests?regno=${regno}`, {
         withCredentials: true,
       });
 

@@ -24,7 +24,7 @@ const FileUpload = () => {
         formData.append('file', file);
   
         try {
-          const response = await fetch('https://vercel-1bge.onrender.com/userinput/', {
+          const response = await fetch('https://render-frontend-f05v.onrender.com/userinput/', {
             method: 'POST',
             body: formData,
           });

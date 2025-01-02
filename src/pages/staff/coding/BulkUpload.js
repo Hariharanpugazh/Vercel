@@ -50,7 +50,7 @@ const BulkUpload = () => {
 
     try {
       setUploadStatus("Uploading...");
-      const response = await fetch("https://vercel-1bge.onrender.com/api/bulk-upload/", {
+      const response = await fetch("https://render-frontend-f05v.onrender.com/api/bulk-upload/", {
         method: "POST",
         body: formData,
       });

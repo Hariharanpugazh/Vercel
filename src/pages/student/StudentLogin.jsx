@@ -24,7 +24,7 @@ const StudentLogin = ({ onLogin }) => {
     setErrorMessage(''); // Reset error message
 
     try {
-      const response = await axios.post('https://vercel-1bge.onrender.com/api/student/login/', formData, {
+      const response = await axios.post('https://render-frontend-f05v.onrender.com/api/student/login/', formData, {
         headers: { 'Content-Type': 'application/json' },
         withCredentials: true,
       });

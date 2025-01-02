@@ -28,7 +28,7 @@ const ContestDashboard = () => {
   useEffect(() => {
     const fetchContests = async () => {
       try {
-        const response = await axios.get("https://vercel-1bge.onrender.com/api/contests/");
+        const response = await axios.get("https://render-frontend-f05v.onrender.com/api/contests/");
         setContests(response.data); // Array of contest objects
       } catch (error) {
         console.error("Error fetching contests:", error);
@@ -49,7 +49,7 @@ const ContestDashboard = () => {
   const fetchContestStats = async (contestId) => {
     try {
       const response = await axios.get(
-        `https://vercel-1bge.onrender.com/api/contests/stats/${contestId}/`
+        `https://render-frontend-f05v.onrender.com/api/contests/stats/${contestId}/`
       );
       return response.data; // { total_students, started, completed }
     } catch (error) {
@@ -63,7 +63,7 @@ const ContestDashboard = () => {
     if (!window.confirm("Are you sure you want to delete this contest?")) return;
 
     try {
-      await axios.delete(`https://vercel-1bge.onrender.com/api/contests/delete/${contestId}/`);
+      await axios.delete(`https://render-frontend-f05v.onrender.com/api/contests/delete/${contestId}/`);
       setContests((prev) => prev.filter((contest) => contest.contest_id !== contestId));
       alert("Contest deleted successfully!");
     } catch (error) {

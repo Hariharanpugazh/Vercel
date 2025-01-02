@@ -47,7 +47,7 @@ const Mcq_CombinedDashboard = () => {
   useEffect(() => {
     const fetchStudents = async () => {
       try {
-        const response = await axios.get("https://vercel-1bge.onrender.com/api/student/");
+        const response = await axios.get("https://render-frontend-f05v.onrender.com/api/student/");
         setStudents(response.data);
         setFilteredStudents(response.data);
       } catch (error) {
@@ -100,7 +100,7 @@ const Mcq_CombinedDashboard = () => {
         return;
       }
 
-      const response = await axios.get("https://vercel-1bge.onrender.com/api/mcq/questions", {
+      const response = await axios.get("https://render-frontend-f05v.onrender.com/api/mcq/questions", {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -173,7 +173,7 @@ const Mcq_CombinedDashboard = () => {
         return;
       }
 
-      const response = await axios.post("https://vercel-1bge.onrender.com/api/mcq/publish/", {
+      const response = await axios.post("https://render-frontend-f05v.onrender.com/api/mcq/publish/", {
         students: selectedStudents,
       },
       {

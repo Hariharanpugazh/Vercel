@@ -22,7 +22,7 @@ const Mcq_createQuestion = () => {
           return;
         }
 
-        const response = await axios.get("https://vercel-1bge.onrender.com/api/mcq/questions", {
+        const response = await axios.get("https://render-frontend-f05v.onrender.com/api/mcq/questions", {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -110,7 +110,7 @@ const Mcq_createQuestion = () => {
 
       if (isNewQuestion) {
         await axios.post(
-          "https://vercel-1bge.onrender.com/api/mcq/save-questions/",
+          "https://render-frontend-f05v.onrender.com/api/mcq/save-questions/",
           { questions: [newQuestion] },
           {
             headers: { Authorization: `Bearer ${token} `},
@@ -119,7 +119,7 @@ const Mcq_createQuestion = () => {
         alert("New question saved successfully!");
       } else {
         await axios.put(
-          `https://vercel-1bge.onrender.com/api/mcq/questions/${questionList[currentQuestionIndex]._id}`,
+          `https://render-frontend-f05v.onrender.com/api/mcq/questions/${questionList[currentQuestionIndex]._id}`,
           newQuestion,
           {
             headers: { Authorization: `Bearer ${token} `},
@@ -128,7 +128,7 @@ const Mcq_createQuestion = () => {
         alert("Question updated successfully!");
       }
 
-      const response = await axios.get("https://vercel-1bge.onrender.com/api/mcq/questions", {
+      const response = await axios.get("https://render-frontend-f05v.onrender.com/api/mcq/questions", {
         headers: { Authorization: `Bearer ${token} `},
       });
 

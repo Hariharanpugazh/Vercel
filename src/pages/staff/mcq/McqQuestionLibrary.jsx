@@ -23,7 +23,7 @@ const McqLibrary = () => {
           return;
         }
 
-        const response = await axios.get('https://vercel-1bge.onrender.com/api/fetch-all-questions/', {
+        const response = await axios.get('https://render-frontend-f05v.onrender.com/api/fetch-all-questions/', {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -70,7 +70,7 @@ const McqLibrary = () => {
 
     try {
       await axios.post(
-        "https://vercel-1bge.onrender.com/api/mcq/save-questions/",
+        "https://render-frontend-f05v.onrender.com/api/mcq/save-questions/",
         { questions: selected },
         {
           headers: {
