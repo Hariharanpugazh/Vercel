@@ -1,0 +1,78 @@
+{
+    "problems": [
+        {
+            "id": 1,
+            "title": "Fibonacci Sequence",
+            "role": [
+                "Senior Software Developer"
+            ],
+            "level": "hard",
+            "problem_statement": "Write a function that returns the nth Fibonacci number.",
+            "samples": [
+                {
+                    "input": [
+                        5
+                    ],
+                    "output": 5
+                },
+                {
+                    "input": [
+                        7
+                    ],
+                    "output": 13
+                }
+            ],
+            "hidden_samples": [
+                {
+                    "input": [
+                        10
+                    ],
+                    "output": 55
+                },
+                {
+                    "input": [
+                        15
+                    ],
+                    "output": 610
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "title": "Factorial of Number",
+            "role": [
+                "Junior Software Developer"
+            ],
+            "level": "easy",
+            "problem_statement": "Write a function that calculates the factorial of a given number.",
+            "samples": [
+                {
+                    "input": [
+                        5
+                    ],
+                    "output": 120
+                },
+                {
+                    "input": [
+                        3
+                    ],
+                    "output": 6
+                }
+            ],
+            "hidden_samples": [
+                {
+                    "input": [
+                        7
+                    ],
+                    "output": 5040
+                },
+                {
+                    "input": [
+                        4
+                    ],
+                    "output": 24
+                }
+            ]
+        }
+    ]
+}
