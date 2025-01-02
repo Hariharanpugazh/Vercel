@@ -199,7 +199,6 @@ export default function Mcq_Assessment() {
       setIsTestFinished(true);
     } catch (error) {
       console.error("Error submitting test:", error);
-      alert("Failed to submit the test.");
     }
   };
 
