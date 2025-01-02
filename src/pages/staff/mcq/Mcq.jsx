@@ -68,7 +68,7 @@ tags: selectedQuestion?.tags || [],
   
   const handleDelete = async (question_id) => {
     try {
-        const response = await fetch(`https://render-frontend-f05v.onrender.com//api/delete_question/${question_id}/`, {
+        const response = await fetch(`https://render-frontend-f05v.onrender.com/api/delete_question/${question_id}/`, {
             method: 'DELETE',
         });
 
@@ -91,7 +91,7 @@ const handleUpdate = async (question_id) => {
     // Show loading state if needed
     setIsLoading(true);
     
-    const response = await fetch(`https://render-frontend-f05v.onrender.com//api/update_question/${question_id}/`, {
+    const response = await fetch(`https://render-frontend-f05v.onrender.com/api/update_question/${question_id}/`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

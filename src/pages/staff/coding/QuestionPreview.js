@@ -46,7 +46,7 @@ const QuestionPreview = () => {
 
     const fetchStudents = async () => {
       try {
-        const response = await axios.get("https://render-frontend-f05v.onrender.com//api/student/");
+        const response = await axios.get("https://render-frontend-f05v.onrender.com/api/student/");
         setStudents(response.data);
         setFilteredStudents(response.data);
       } catch (error) {
@@ -115,7 +115,7 @@ const QuestionPreview = () => {
 
   const handlePublish = async () => {
     try {
-      const response = await axios.post("https://render-frontend-f05v.onrender.com//publish/", {
+      const response = await axios.post("https://render-frontend-f05v.onrender.com/publish/", {
         contestId,
         questions: selectedQuestions.map((q) => q.id),
         students: selectedStudents,

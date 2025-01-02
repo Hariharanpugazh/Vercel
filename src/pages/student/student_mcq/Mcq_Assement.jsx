@@ -28,7 +28,7 @@ export default function Mcq_Assessment() {
     const fetchQuestions = async () => {
       try {
         const response = await axios.get(
-          `https://render-frontend-f05v.onrender.com//api/mcq/get_mcqquestions/${contestId}`
+          `https://render-frontend-f05v.onrender.com/api/mcq/get_mcqquestions/${contestId}`
         );
         setQuestions(response.data.questions);
         const { hours, minutes } = response.data.duration;
@@ -180,7 +180,7 @@ export default function Mcq_Assessment() {
       };
 
       const response = await axios.post(
-        "https://render-frontend-f05v.onrender.com//api/mcq/submit_assessment/",
+        "https://render-frontend-f05v.onrender.com/api/mcq/submit_assessment/",
         payload,
         {
           headers: {

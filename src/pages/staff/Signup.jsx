@@ -45,7 +45,7 @@ export default function Signup() {
         password: formData.password
       };
 
-      const response = await axios.post('https://render-frontend-f05v.onrender.com//api/staff/signup/', payload);
+      const response = await axios.post('https://render-frontend-f05v.onrender.com/api/staff/signup/', payload);
       
       if (response.data.message === 'Signup successful') {
         localStorage.setItem('token', response.data.token);

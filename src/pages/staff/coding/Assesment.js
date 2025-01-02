@@ -96,7 +96,7 @@ const SinglePageStepper = () => {
             };
 
             try {
-                const response = await fetch("https://render-frontend-f05v.onrender.com//api/create-assessment/", {
+                const response = await fetch("https://render-frontend-f05v.onrender.com/api/create-assessment/", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",

@@ -50,7 +50,7 @@ const ViewTest = () => {
       setIsPublishing(true); // Disable button during API call
 
       // API call to publish results
-      const response = await axios.post(`https://render-frontend-f05v.onrender.com//api/mcq/publish-result/${contestId}/`);
+      const response = await axios.post(`https://render-frontend-f05v.onrender.com/api/mcq/publish-result/${contestId}/`);
       if (response.status === 200) {
         setIsPublished(true); // Mark as published
         alert("Results published successfully.");
@@ -68,7 +68,7 @@ const ViewTest = () => {
   useEffect(() => {
     const fetchTestDetails = async () => {
       try {
-        const response = await axios.get(`https://render-frontend-f05v.onrender.com//api/contests/${contestId}/`);
+        const response = await axios.get(`https://render-frontend-f05v.onrender.com/api/contests/${contestId}/`);
         setTestDetails(response.data);
 
         // Save pass percentage to session storage
@@ -87,7 +87,7 @@ const ViewTest = () => {
   // Fetch All Students
   const fetchStudents = async () => {
     try {
-      const response = await axios.get("https://render-frontend-f05v.onrender.com//api/student/");
+      const response = await axios.get("https://render-frontend-f05v.onrender.com/api/student/");
       console.log("Fetched students:", response.data); // Debugging
       setStudents(response.data);
       setFilteredStudents(response.data); // Apply filters initially
@@ -121,7 +121,7 @@ const ViewTest = () => {
   const handleSave = async () => {
     try {
       console.log("Updated Test Data:", testDetails);
-      await axios.put(`https://render-frontend-f05v.onrender.com//api/contests/${contestId}/`, testDetails);
+      await axios.put(`https://render-frontend-f05v.onrender.com/api/contests/${contestId}/`, testDetails);
       setIsEditing(false);
       alert("Test details updated successfully");
     } catch (err) {

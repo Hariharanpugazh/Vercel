@@ -33,7 +33,7 @@ const StudentDashboard = () => {
 
   const fetchStudentData = async () => {
     try {
-      const response = await axios.get("https://render-frontend-f05v.onrender.com//api/student/profile/", {
+      const response = await axios.get("https://render-frontend-f05v.onrender.com/api/student/profile/", {
         withCredentials: true,
       });
       const { name, regno, studentId } = response.data;
@@ -58,7 +58,7 @@ const StudentDashboard = () => {
       const completedTestsWithPublishStatus = await Promise.all(
         allCompletedTests.map(async (test) => {
           const response = await axios.get(
-            `https://render-frontend-f05v.onrender.com//api/student/check-publish-status/${test?.contestId || test?.testId || "unknown"}/`
+            `https://render-frontend-f05v.onrender.com/api/student/check-publish-status/${test?.contestId || test?.testId || "unknown"}/`
           );
           return { ...test, ispublish: response.data.ispublish || false };
         })
@@ -76,7 +76,7 @@ const StudentDashboard = () => {
 
   const fetchOpenTests = async (regno) => {
     try {
-      const response = await axios.get(`https://render-frontend-f05v.onrender.com//api/student/tests?regno=${regno}`, {
+      const response = await axios.get(`https://render-frontend-f05v.onrender.com/api/student/tests?regno=${regno}`, {
         withCredentials: true,
       });
 
@@ -110,7 +110,7 @@ const StudentDashboard = () => {
 
   const fetchMcqTests = async (regno) => {
     try {
-      const response = await axios.get(`https://render-frontend-f05v.onrender.com//api/student/mcq-tests?regno=${regno}`, {
+      const response = await axios.get(`https://render-frontend-f05v.onrender.com/api/student/mcq-tests?regno=${regno}`, {
         withCredentials: true,
       });
   
@@ -150,7 +150,7 @@ const StudentDashboard = () => {
   
   const fetchCodingReports = async () => {
     try {
-      const response = await axios.get(`https://render-frontend-f05v.onrender.com//api/student/coding-reports/`, {
+      const response = await axios.get(`https://render-frontend-f05v.onrender.com/api/student/coding-reports/`, {
         withCredentials: true,
       });
 
@@ -163,7 +163,7 @@ const StudentDashboard = () => {
 
   const fetchMcqReports = async () => {
     try {
-      const response = await axios.get(`https://render-frontend-f05v.onrender.com//api/student/mcq-reports/`, {
+      const response = await axios.get(`https://render-frontend-f05v.onrender.com/api/student/mcq-reports/`, {
         withCredentials: true,
       });
 

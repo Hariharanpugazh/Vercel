@@ -40,7 +40,7 @@ const QuestionsLibrary = () => {
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const response = await axios.get("https://render-frontend-f05v.onrender.com//manualProblems/");
+        const response = await axios.get("https://render-frontend-f05v.onrender.com/manualProblems/");
         setQuestions(response.data.problems);
         setFilteredQuestions(response.data.problems);
 

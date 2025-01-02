@@ -36,7 +36,7 @@ const ViewContest = () => {
     setLoading(true);
     try {
       const response = await axios.get(
-        `https://render-frontend-f05v.onrender.com//api/contests/${contestId}/students/`
+        `https://render-frontend-f05v.onrender.com/api/contests/${contestId}/students/`
       );
       setStudents(response.data);
     } catch (error) {

@@ -48,7 +48,7 @@ const Mcq_Dashboard = () => {
   useEffect(() => {
     const fetchStudents = async () => {
       try {
-        const response = await axios.get("https://render-frontend-f05v.onrender.com//api/student/");
+        const response = await axios.get("https://render-frontend-f05v.onrender.com/api/student/");
         setStudents(response.data);
         setFilteredStudents(response.data);
       } catch (error) {
@@ -101,7 +101,7 @@ const Mcq_Dashboard = () => {
         return;
       }
 
-      const response = await axios.get("https://render-frontend-f05v.onrender.com//api/mcq/questions", {
+      const response = await axios.get("https://render-frontend-f05v.onrender.com/api/mcq/questions", {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -128,7 +128,7 @@ const Mcq_Dashboard = () => {
       }
 
       const response = await axios.post(
-        "https://render-frontend-f05v.onrender.com//api/finish-contest",
+        "https://render-frontend-f05v.onrender.com/api/finish-contest",
         {},
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -162,7 +162,7 @@ const Mcq_Dashboard = () => {
       // Eliminate duplicates
       const uniqueQuestions = Array.from(new Set(questions.map(JSON.stringify))).map(JSON.parse);
 
-      const response = await axios.post("https://render-frontend-f05v.onrender.com//api/mcq/publish/", {
+      const response = await axios.post("https://render-frontend-f05v.onrender.com/api/mcq/publish/", {
         questions: uniqueQuestions,
         students: selectedStudents,
       },
