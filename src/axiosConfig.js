@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: process.env.REACT_APP_API_BASE_URL || 'https://render-frontend-f05v.onrender.com', // Use environment variable for base URL
+  baseURL: 'https://render-frontend-f05v.onrender.com', // Use environment variable for base URL
   withCredentials: true, // Ensures cookies are sent with requests
 });
 
