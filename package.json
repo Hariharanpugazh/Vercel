@@ -1,0 +1,66 @@
+{
+  "name": "code_contest",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@headlessui/react": "^2.2.0",
+    "@monaco-editor/react": "^4.6.0",
+    "@mui/icons-material": "^6.1.7",
+    "@mui/material": "^6.3.1",
+    "@mui/x-charts": "^7.23.2",
+    "@nextui-org/calendar": "^2.2.9",
+    "@nextui-org/card": "^2.2.9",
+    "@nextui-org/react": "^2.6.11",
+    "@shadcn/ui": "^0.0.4",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.7.7",
+    "chart.js": "^4.4.7",
+    "cobe": "^0.6.3",
+    "date-fns": "^4.1.0",
+    "framer-motion": "^11.15.0",
+    "js-cookie": "^3.0.5",
+    "jsonwebtoken": "^9.0.2",
+    "jwt-decode": "^4.0.0",
+    "lucide-react": "^0.460.0",
+    "monaco-editor": "^0.52.0",
+    "mongodb": "^6.12.0",
+    "react": "^18.3.1",
+    "react-chartjs-2": "^5.2.0",
+    "react-dom": "^18.3.1",
+    "react-icons": "^5.3.0",
+    "react-modal": "^3.16.1",
+    "react-router-dom": "^6.27.0",
+    "react-scripts": "5.0.1",
+    "react-toastify": "^10.0.6",
+    "tailwindcss": "^3.4.14",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
