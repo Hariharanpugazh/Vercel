@@ -33,7 +33,7 @@ const StudentLogin = ({ onLogin }) => {
       const response = await axios.post(
         `${API_BASE_URL }/api/student/login/`,
         formData,
-        {
+        { 
           headers: { 'Content-Type': 'application/json' },
           withCredentials: true,
         }
