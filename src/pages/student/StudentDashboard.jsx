@@ -45,7 +45,7 @@ const StudentDashboard = () => {
   const [openTests, setOpenTests] = useState([]);
   const [completedTests, setCompletedTests] = useState([]);
   const [mcqTests, setMcqTests] = useState([]);
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'https://vercel-sandy-xi-12.vercel.app';
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'https://render-frontend-f05v.onrender.com';
   const [studentData, setStudentData] = useState({
     name: "",
     regno: "",

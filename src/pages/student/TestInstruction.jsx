@@ -11,7 +11,7 @@ const TestInstructions = () => {
   const { assessment_type } = location.state || {};
   const [loading, setLoading] = useState(false);
   const [mcqTests, setMcqTests] = useState([]);
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'https://vercel-sandy-xi-12.vercel.app';
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'https://render-frontend-f05v.onrender.com';
 
   // Coding Assessment API function
   const start_codingTest = async (contestId, studentId) => {

@@ -14,7 +14,7 @@ export default function Signup() {
     confirmPassword: '',
   });
   const [showPassword, setShowPassword] = useState(true);
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'https://vercel-sandy-xi-12.vercel.app';
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'https://render-frontend-f05v.onrender.com';
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
