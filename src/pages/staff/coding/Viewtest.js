@@ -58,7 +58,7 @@ const ViewTest = () => {
       setIsPublishing(true); // Disable button during API call
 
       // API call to publish results
-      const response = await axios.post(`http://127.0.0.1:8000/api/mcq/publish-result/${contestId}/`);
+      const response = await axios.post(`https://render-frontend-f05v.onrender.com/api/mcq/publish-result/${contestId}/`);
       if (response.status === 200) {
         setIsPublished(true); // Mark as published
         alert("Results published successfully.");
@@ -173,7 +173,7 @@ const ViewTest = () => {
   useEffect(() => {
     const fetchTestDetails = async () => {
       try {
-        const response = await axios.get(`http://127.0.0.1:8000/api/contests/${contestId}/`);
+        const response = await axios.get(`https://render-frontend-f05v.onrender.com/api/contests/${contestId}/`);
         setTestDetails(response.data);
 
         // Map student details from the response to populate the table
@@ -202,7 +202,7 @@ const ViewTest = () => {
   useEffect(() => {
     const fetchAllStudents = async () => {
       try {
-        const response = await axios.get("http://127.0.0.1:8000/api/student/");
+        const response = await axios.get("https://render-frontend-f05v.onrender.com/api/student/");
         const updatedStudents = response.data.map((student) => ({
           ...student,
           year: student.year || "N/A",
@@ -244,7 +244,7 @@ const ViewTest = () => {
       setIsEditing(false);
       setLoading(true);
 
-      await axios.put(`http://127.0.0.1:8000/api/contests/${contestId}/`, testDetails);
+      await axios.put(`https://render-frontend-f05v.onrender.com/api/contests/${contestId}/`, testDetails);
 
       alert("Test details updated successfully");
 
@@ -371,7 +371,7 @@ const ViewTest = () => {
       const confirmClose = window.confirm("Are you sure you want to close the session?");
       if (!confirmClose) return;
 
-      await axios.post(`http://127.0.0.1:8000/api/mcq/close-session/${contestId}/`);
+      await axios.post(`https://render-frontend-f05v.onrender.com/api/mcq/close-session/${contestId}/`);
       alert("Session closed successfully.");
       navigate("/staffdashboard"); // Adjust the path as per your routing setup
     } catch (error) {
@@ -386,7 +386,7 @@ const ViewTest = () => {
       const confirmDelete = window.confirm("Are you sure you want to delete the contest?");
       if (!confirmDelete) return;
 
-      await axios.delete(`http://127.0.0.1:8000/api/mcq/delete-contest/${contestId}/`);
+      await axios.delete(`https://render-frontend-f05v.onrender.com/api/mcq/delete-contest/${contestId}/`);
       alert("Contest deleted successfully.");
       navigate("/staffdashboard"); // Adjust the path as per your routing setup
     } catch (error) {

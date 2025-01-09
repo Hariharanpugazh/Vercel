@@ -24,7 +24,7 @@ const McqLibrary = () => {
           return;
         }
 
-        const response = await axios.get('http://127.0.0.1:8000/api/fetch-all-questions/', {
+        const response = await axios.get('https://render-frontend-f05v.onrender.com/api/fetch-all-questions/', {
           headers: { Authorization: `Bearer ${token}` },
         });
 

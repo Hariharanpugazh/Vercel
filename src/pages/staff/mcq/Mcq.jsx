@@ -142,7 +142,7 @@ const handleUpdate = async (question_id) => {
   const fetchQuestions = async () => {
     try {
       setLoading(true);
-      const response = await fetch('http://127.0.0.1:8000/api/fetch-all-questions/');
+      const response = await fetch('https://render-frontend-f05v.onrender.com/api/fetch-all-questions/');
       if (!response.ok) throw new Error('Failed to fetch questions');
       const data = await response.json();
       setQuestions(data.questions);
@@ -177,7 +177,7 @@ const handleUpdate = async (question_id) => {
     }
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/upload-single-question/", {
+      const response = await fetch("https://render-frontend-f05v.onrender.com/api/upload-single-question/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(singleQuestionData)
@@ -220,7 +220,7 @@ const handleUpdate = async (question_id) => {
     formData.append("file", file);
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/mcq-bulk-upload/", {
+      const response = await fetch("https://render-frontend-f05v.onrender.com/api/mcq-bulk-upload/", {
         method: "POST",
         body: formData,
       });

@@ -35,11 +35,11 @@ const EnhancedStudentDashboard = () => {
     const fetchStudentData = async () => {
       try {
         const codingResponse = await axios.get(
-          `http://127.0.0.1:8000/staff/studentstats/${regno}/`
+          `https://render-frontend-f05v.onrender.com/staff/studentstats/${regno}/`
         );
 
         const mcqResponse = await axios.get(
-          `http://127.0.0.1:8000/staff/mcq_stats/${regno}/`
+          `https://render-frontend-f05v.onrender.com/staff/mcq_stats/${regno}/`
         );
 
         if (codingResponse.status === 200 && mcqResponse.status === 200) {

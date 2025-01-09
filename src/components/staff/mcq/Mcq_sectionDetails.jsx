@@ -98,7 +98,7 @@ const Mcq_sectionDetails = () => {
       }));
 
       const response = await axios.post(
-        "http://127.0.0.1:8000/api/mcq/save-assessment-questions/",  // Make sure this URL matches your backend
+        "https://render-frontend-f05v.onrender.com/api/mcq/save-assessment-questions/",  // Make sure this URL matches your backend
         {
           sectionName: section.sectionName,
           numQuestions: section.numQuestions,
@@ -144,7 +144,7 @@ const Mcq_sectionDetails = () => {
         .filter((student) => selectedStudents.includes(student.regno))
         .map((student) => student.email);
 
-      const response = await axios.post("http://127.0.0.1:8000/api/mcq/publish-section/", {
+      const response = await axios.post("https://render-frontend-f05v.onrender.com/api/mcq/publish-section/", {
         questions: uniqueQuestions,
         students: selectedStudents,
         studentEmails: selectedStudentEmails,

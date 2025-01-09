@@ -13,7 +13,7 @@ const App = () => {
   useEffect(() => {
     setIsLoading(true);
     // Fetch student data (replace with your API endpoint)
-    fetch("http://127.0.0.1:8000/studentprofile/")
+    fetch("https://render-frontend-f05v.onrender.com/studentprofile/")
       .then((response) => response.json())
       .then((data) => {
         setStudents(data.students);
