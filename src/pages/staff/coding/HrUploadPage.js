@@ -48,7 +48,7 @@ const HrUpload = () => {
   const [filters, setFilters] = useState({ collegename: "", dept: "" });
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8000';
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'https://vercel-sandy-xi-12.vercel.app';
 
   useEffect(() => {
     const fetchQuestions = async () => {

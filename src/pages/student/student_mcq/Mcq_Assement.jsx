@@ -9,7 +9,7 @@ export default function Mcq_Assessment() {
   const { contestId } = useParams();
   const studentId = sessionStorage.getItem("studentId");
   const navigate = useNavigate();
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8000';
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'https://vercel-sandy-xi-12.vercel.app';
   const [questions, setQuestions] = useState([]);
   const [selectedAnswers, setSelectedAnswers] = useState(() => {
     const storedAnswers = sessionStorage.getItem(`selectedAnswers_${contestId}`);
@@ -332,7 +332,7 @@ export default function Mcq_Assessment() {
       };
   
       const response = await axios.post(
-        "http://localhost:8000/api/mcq/submit_assessment/",
+        "https://vercel-sandy-xi-12.vercel.app/api/mcq/submit_assessment/",
         payload,
         {
           headers: {

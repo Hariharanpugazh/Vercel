@@ -8,7 +8,7 @@ const StudentResult = ({  }) => {
   const [expandedQuestion, setExpandedQuestion] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8000';
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'https://vercel-sandy-xi-12.vercel.app';
   const regno = studentId;
   useEffect(() => {
     const fetchStudentReport = async () => {

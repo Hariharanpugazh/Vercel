@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const StudentRegister = () => {
   const navigate = useNavigate();
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8000';
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'https://vercel-sandy-xi-12.vercel.app';
   const [formData, setFormData] = useState({
     name: '',
     email: '',

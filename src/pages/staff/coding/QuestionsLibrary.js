@@ -32,7 +32,7 @@ const QuestionsLibrary = () => {
   const { contestId } = useParams();
   const location = useLocation();
   const requiredQuestions = location.state?.requiredQuestions || 0;
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8000';
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'https://vercel-sandy-xi-12.vercel.app';
 
   // Pagination states
   const [page, setPage] = useState(0);

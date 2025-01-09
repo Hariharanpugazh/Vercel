@@ -49,7 +49,7 @@ const Mcq_Dashboard = () => {
   const [sharingLink, setSharingLink] = useState("");
   const [shareModalOpen, setShareModalOpen] = useState(false);
   const [isPublishing, setIsPublishing] = useState(false);
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8000';
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'https://vercel-sandy-xi-12.vercel.app';
 
   useEffect(() => {
     const fetchStudents = async () => {
@@ -191,7 +191,7 @@ const Mcq_Dashboard = () => {
   
       // Make the API call to publish questions
       const response = await axios.post(
-        "http://localhost:8000/api/mcq/publish/",
+        "https://vercel-sandy-xi-12.vercel.app/api/mcq/publish/",
         payload,
         {
           headers: {
