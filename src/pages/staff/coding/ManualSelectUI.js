@@ -7,7 +7,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 // Define available roles (can be customized or fetched from an API if needed)
 const availableRoles = ["Junior Software Developer", "Senior Software Developer", "AI Developer", "Project Manager"];
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8000';
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'https://render-frontend-f05v.onrender.com';
 
 const ManualSelectUI = () => {
   const location = useLocation();

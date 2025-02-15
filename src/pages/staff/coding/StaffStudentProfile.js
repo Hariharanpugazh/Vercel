@@ -39,7 +39,7 @@ const StaffStudentProfile = () => {
   const [yearFilter, setYearFilter] = useState([]);
   const [openFilterDialog, setOpenFilterDialog] = useState(false);
   const [sortConfig, setSortConfig] = useState({ key: null, direction: "ascending" });
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:8000";
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "https://render-frontend-f05v.onrender.com";
 
   useEffect(() => {
     setIsLoading(true);

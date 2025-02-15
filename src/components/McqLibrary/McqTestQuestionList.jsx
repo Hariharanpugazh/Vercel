@@ -11,7 +11,7 @@ import TotalQuestions from './TotalQuestions';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8000';
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'https://render-frontend-f05v.onrender.com';
 
 const McqTestQuestionList = ({ testId, setSelectedQuestion, currentPage, totalPages, setCurrentPage, isEditMode, deleteSelectedQuestions, view, setView, selectedQuestion }) => {
   const [searchQuery, setSearchQuery] = useState("");

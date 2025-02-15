@@ -11,7 +11,7 @@ const QuestionsDisplay = () => {
   const [editedQuestions, setEditedQuestions] = useState(questions || []);
   const [isEditing, setIsEditing] = useState(null);
   const [levelReport, setLevelReport] = useState({}); // New state for the report
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8000';
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'https://render-frontend-f05v.onrender.com';
 
   useEffect(() => {
     // Calculate the level report whenever the questions change

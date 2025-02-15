@@ -44,7 +44,7 @@ const StyledTab = styled(Tab)({
 });
 
 const API_BASE_URL =
-  process.env.REACT_APP_API_BASE_URL || "http://localhost:8000";
+  process.env.REACT_APP_API_BASE_URL || "https://render-frontend-f05v.onrender.com";
 
 const DashboardHeader = styled(Box)(({ theme }) => ({
   background:

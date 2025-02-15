@@ -6,7 +6,7 @@ import axios from 'axios';
 const PreviewButton = ({ onEditProblem }) => {
   const [openPreview, setOpenPreview] = useState(false);
   const [previewData, setPreviewData] = useState({ easy: [], medium: [], hard: [] });
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8000';
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'https://render-frontend-f05v.onrender.com';
 
   const handlePreview = async () => {
     try {

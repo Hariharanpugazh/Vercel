@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: process.env.REACT_APP_API_BASE_URL || 'http://localhost:8000', // Use environment variable for base URL
+  baseURL: process.env.REACT_APP_API_BASE_URL || 'https://render-frontend-f05v.onrender.com', // Use environment variable for base URL
   withCredentials: true, // Ensures cookies are sent with requests
 });
 
@@ -46,7 +46,7 @@ api.interceptors.response.use(
         const refreshToken = localStorage.getItem('refreshToken');
         if (!refreshToken) throw new Error('Refresh token not found');
 
-        const response = await axios.post(`${process.env.REACT_APP_API_BASE_URL || 'http://localhost:8000'}/api/token/refresh/`, {
+        const response = await axios.post(`${process.env.REACT_APP_API_BASE_URL || 'https://render-frontend-f05v.onrender.com'}/api/token/refresh/`, {
           refresh: refreshToken,
         });
 

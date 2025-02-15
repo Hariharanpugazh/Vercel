@@ -16,7 +16,7 @@ const ResetPassword = () => {
   const [otpSent, setOtpSent] = useState(false); // Track if OTP has been sent
   const [otpTimer, setOtpTimer] = useState(60); // OTP timer in seconds (60 seconds)
   const navigate = useNavigate();
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8000';
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'https://render-frontend-f05v.onrender.com';
   const otpInputs = useRef([]);
 
   useEffect(() => {

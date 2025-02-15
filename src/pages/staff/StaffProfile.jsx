@@ -16,7 +16,7 @@ const StaffProfile = () => {
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const API_BASE_URL =
-    process.env.REACT_APP_API_BASE_URL || "http://localhost:8000";
+    process.env.REACT_APP_API_BASE_URL || "https://render-frontend-f05v.onrender.com";
 
   useEffect(() => {
     const fetchProfile = async () => {

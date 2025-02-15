@@ -24,7 +24,7 @@ function ContestPage() {
   const [problems, setProblems] = useState([]);
   const [submissions, setSubmissions] = useState({});
   const mediaStreamRef = useRef(null);
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8000';
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'https://render-frontend-f05v.onrender.com';
   const [setTestEvaluations] = useState([]);
   const [timeLeft, setTimeLeft] = useState(duration);
   const [timerExpired, setTimerExpired] = useState(false);

@@ -47,7 +47,7 @@ const Mcq_CombinedDashboard = () => {
   const [isLibraryModalOpen, setIsLibraryModalOpen] = useState(false);
   const [isAIGenerateModalOpen, setIsAIGenerateModalOpen] = useState(false);
   const [visibleSections, setVisibleSections] = useState([]);
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:8000";
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "https://render-frontend-f05v.onrender.com";
   const [allSectionsSubmitted, setAllSectionsSubmitted] = useState(false);
 
   useEffect(() => {

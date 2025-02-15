@@ -45,7 +45,7 @@ const Mcq_sectionDetails = () => {
   const [questions, setQuestions] = useState([]);
   const [selectedQuestionsLocal, setSelectedQuestionsLocal] = useState([]);
   const [currentSectionQuestions, setCurrentSectionQuestions] = useState([]);
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8000';
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'https://render-frontend-f05v.onrender.com';
 
   useEffect(() => {
     const storedSections = JSON.parse(sessionStorage.getItem("sections")) || [];

@@ -5,7 +5,7 @@ const BulkUpload = () => {
   const [file, setFile] = useState(null);
   const [uploadStatus, setUploadStatus] = useState("");
   const [isDragActive, setIsDragActive] = useState(false);
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8000';
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'https://render-frontend-f05v.onrender.com';
 
   const handleFileChange = (event) => {
     const uploadedFile = event.target.files[0];

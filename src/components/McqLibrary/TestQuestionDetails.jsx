@@ -4,7 +4,7 @@ import { getLevelBadgeColor, renderTags } from '../../lib/utils';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8000';
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'https://render-frontend-f05v.onrender.com';
 
 const QuestionDetails = ({ selectedQuestion, setSelectedQuestion, isEditing, setIsEditing, testId, isLoading, setIsLoading ,setView}) => {
   const handleChange = (field, value) => setSelectedQuestion({ ...selectedQuestion, [field]: value });

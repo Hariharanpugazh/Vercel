@@ -28,7 +28,7 @@ const EnhancedStudentDashboard = () => {
   const { regno } = useParams();
   const [studentData, setStudentData] = useState(null);
   const [loading, setLoading] = useState(true);
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:8000";
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "https://render-frontend-f05v.onrender.com";
   const navigate = useNavigate();
   const [search, setSearch] = useState("");
 

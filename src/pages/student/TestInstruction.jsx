@@ -32,7 +32,7 @@ const TestInstructions = () => {
   const { contestId } = useParams();
   const { assessment_type } = location.state || {};
   const [loading, setLoading] = useState(false);
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8000';
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'https://render-frontend-f05v.onrender.com';
 
   const student_details = [
     { name: "John Doe", status: "Yet to Complete" },
@@ -58,7 +58,7 @@ const TestInstructions = () => {
     const fetchSectionDetails = async () => {
       if (!contestId) return; // Ensure contestId is provided before making the request
       try {
-        const response = await fetch(`http://localhost:8000/api/student/student_section_details/${contestId}/`);
+        const response = await fetch(`https://render-frontend-f05v.onrender.com/api/student/student_section_details/${contestId}/`);
         const data = await response.json();
         if (data.sections) {
           setSections(data.sections);

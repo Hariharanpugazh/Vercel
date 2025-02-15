@@ -17,7 +17,7 @@ export default function Mcq_Assessment() {
   const studentId = sessionStorage.getItem("studentId");
   const [currentTest, setCurrentTest] = useState(null);
   const navigate = useNavigate();
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8000';
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'https://render-frontend-f05v.onrender.com';
   const [questions, setQuestions] = useState([]);
   const [selectedAnswers, setSelectedAnswers] = useState(() => {
     const storedAnswers = sessionStorage.getItem(`selectedAnswers_${contestId}`);

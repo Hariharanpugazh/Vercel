@@ -140,7 +140,7 @@ const ViewTest = () => {
   const [filteredDialogStudents, setFilteredDialogStudents] = useState([]);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const API_BASE_URL =
-    process.env.REACT_APP_API_BASE_URL || "http://localhost:8000";
+    process.env.REACT_APP_API_BASE_URL || "https://render-frontend-f05v.onrender.com";
   const [isPublished, setIsPublished] = useState(false);
   const [loading, setLoading] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);

@@ -27,7 +27,7 @@ const StudentResult = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(7); // Number of items per page
 
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8000';
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'https://render-frontend-f05v.onrender.com';
 
   useEffect(() => {
     const fetchStudentReport = async () => {
