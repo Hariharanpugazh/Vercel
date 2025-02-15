@@ -1,0 +1,84 @@
+{
+    "problems": [
+        {
+            "id": 1,
+            "title": "Reverse a String",
+            "role": [
+                "Junior Software Developer",
+                "AI Developer"
+            ],
+            "level": "easy",
+            "problem_statement": "Write a function that takes a string as input and returns the string in reverse.",
+            "samples": [
+                {
+                    "input": [
+                        "hello"
+                    ],
+                    "output": "olleh"
+                },
+                {
+                    "input": [
+                        "world"
+                    ],
+                    "output": "dlrow"
+                }
+            ],
+            "hidden_samples": [
+                {
+                    "input": [
+                        "hidden"
+                    ],
+                    "output": "neddih"
+                },
+                {
+                    "input": [
+                        "reverse"
+                    ],
+                    "output": "esrever"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "title": "Sum of Two Numbers",
+            "role": [
+                "Junior Software Developer",
+                "Senior Software Developer"
+            ],
+            "level": "easy",
+            "problem_statement": "Write a function that takes two numbers as input and returns their sum.",
+            "samples": [
+                {
+                    "input": [
+                        "5",
+                        "3"
+                    ],
+                    "output": "8"
+                },
+                {
+                    "input": [
+                        "10",
+                        "-5"
+                    ],
+                    "output": "5"
+                }
+            ],
+            "hidden_samples": [
+                {
+                    "input": [
+                        "100",
+                        "200"
+                    ],
+                    "output": "300"
+                },
+                {
+                    "input": [
+                        "-10",
+                        "-20"
+                    ],
+                    "output": "-30"
+                }
+            ]
+        }
+    ]
+}
